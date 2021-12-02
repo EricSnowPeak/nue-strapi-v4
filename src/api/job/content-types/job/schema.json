@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "Jobs",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "Description": {
+      "type": "richtext",
+      "required": true
+    },
+    "Anchor": {
+      "type": "uid",
+      "targetField": "Title"
+    }
+  }
+}
