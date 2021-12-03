@@ -10,4 +10,8 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  // wysiwyg: {
+  //   enabled: false,
+  //   resolve: "./src/plugins/wysiwyg",
+  // },
 });

@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "msas",
+  "info": {
+    "singularName": "msa",
+    "pluralName": "msas",
+    "displayName": "Master Subscription Agreement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Content": {
+      "type": "richtext",
+      "required": true
+    },
+    "Title": {
+      "type": "string"
+    }
+  }
+}
