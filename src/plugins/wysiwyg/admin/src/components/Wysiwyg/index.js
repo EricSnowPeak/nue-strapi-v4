@@ -30,11 +30,11 @@ const Wysiwyg = ({ inputDescription, error, label, name, onChange, value }) => {
         fontFamily: "Lato",
       }}
     >
-      <div style={{ position: "absolute", right: "15px", top: "-10px" }}>
+      {/* <div style={{ position: "absolute", right: "15px", top: "-10px" }}>
         <Button variant="default" onClick={handleToggle}>
           MediaLib
         </Button>
-      </div>
+      </div> */}
       {/* <Label htmlFor={name} style={{ marginBottom: 10 }}>
         {label}{" "}
       </Label> */}
@@ -46,11 +46,11 @@ const Wysiwyg = ({ inputDescription, error, label, name, onChange, value }) => {
       )}
       {hasError && <Alert variant="danger">{error}</Alert>}
 
-      <MediaLib
+      {/* <MediaLib
         onToggle={handleToggle}
         isOpen={isOpen}
         onChange={handleChange}
-      />
+      /> */}
     </div>
   );
 };

@@ -1,57 +1,70 @@
 import pluginPkg from "../../package.json";
 import pluginId from "./pluginId";
+import PluginIcon from "./components/PluginIcon";
+
 import App from "./containers/App";
 import Initializer from "./containers/Initializer";
-// import lifecycles from "./lifecycles";
-import trads from "./utils/getTrad";
+const pluginDescription = pluginPkg.strapi.description || pluginPkg.description;
+const name = pluginPkg.strapi.name;
 
 import Wysiwyg from "./components/Wysiwyg";
 
-export default (strapi) => {
-  const pluginDescription =
-    pluginPkg.strapi.description || pluginPkg.description;
-  const icon = pluginPkg.strapi.icon;
-  const name = pluginPkg.strapi.name;
+export default {
+  register(app) {
+    console.log("app", app);
+    // app.addMenuLink({
+    //   to: `/plugins/${pluginId}`,
+    //   icon: PluginIcon,
+    //   intlLabel: {
+    //     id: `${pluginId}.plugin.name`,
+    //     defaultMessage: "My Plugin",
+    //   },
+    //   Component: async () => {
+    //     const component = await import(
+    //       /* webpackChunkName: "my-plugin-page" */ "./pages/HomePage"
+    //     );
 
-  const plugin = {
-    blockerComponent: null,
-    blockerComponentProps: {},
-    description: pluginDescription,
-    icon,
-    id: pluginId,
-    initializer: Initializer,
-    injectedComponents: [],
-    isReady: false,
-    isRequired: pluginPkg.strapi.required || false,
-    layout: null,
-    // lifecycles,
-    mainComponent: App,
-    name,
-    preventComponentRendering: false,
-    trads,
-    menu: {
-      pluginsSectionLinks: [
-        {
-          destination: `/plugins/${pluginId}`,
-          icon,
-          label: {
-            id: `${pluginId}.plugin.name`,
-            defaultMessage: name,
+    //     return component;
+    //   },
+    // });
+
+    app.addFields({ type: "wysiwyg", Component: Wysiwyg });
+
+    app.registerPlugin({
+      blockerComponent: null,
+      blockerComponentProps: {},
+      description: pluginDescription,
+      initializer: Initializer,
+      injectedComponents: [],
+      isReady: false,
+      isRequired: pluginPkg.strapi.required || false,
+      layout: null,
+      mainComponent: App,
+      name,
+      preventComponentRendering: false,
+      menu: {
+        pluginsSectionLinks: [
+          {
+            destination: `/plugins/${pluginId}`,
+            icon: PluginIcon,
+            label: {
+              id: `${pluginId}.plugin.name`,
+              defaultMessage: name,
+            },
+            name,
+            permissions: [
+              // Uncomment to set the permissions of the plugin here
+              // {
+              //   action: '', // the action name should be plugins::plugin-name.actionType
+              //   subject: null,
+              // },
+            ],
           },
-          name,
-          permissions: [
-            // Uncomment to set the permissions of the plugin here
-            // {
-            //   action: '', // the action name should be plugins::plugin-name.actionType
-            //   subject: null,
-            // },
-          ],
-        },
-      ],
-    },
-  };
-
-  strapi.registerField({ type: "wysiwyg", Component: Wysiwyg });
-
-  return strapi.registerPlugin(plugin);
+        ],
+      },
+      icon: PluginIcon,
+      id: pluginId,
+      name,
+    });
+  },
 };
