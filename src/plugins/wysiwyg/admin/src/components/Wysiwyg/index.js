@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@strapi/design-system/Button";
 import { Alert } from "@strapi/design-system/Alert";
 import Editor from "../QuillEditor";
-import MediaLib from "../MediaLib";
+// import MediaLib from "../MediaLib";
 
 const Wysiwyg = ({ inputDescription, error, label, name, onChange, value }) => {
   const [isOpen, setIsOpen] = useState(false);
