@@ -1,0 +1,1 @@
+(self.webpackChunknue_strapi_v_4=self.webpackChunknue_strapi_v_4||[]).push([[2411],{4098:e=>{"use strict";e.exports={}}}]);
