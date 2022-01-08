@@ -4,7 +4,8 @@
   "info": {
     "singularName": "msa",
     "pluralName": "msas",
-    "displayName": "Master Subscription Agreement"
+    "displayName": "Master Subscription Agreement",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,6 +18,11 @@
     },
     "Title": {
       "type": "string"
+    },
+    "metas": {
+      "type": "component",
+      "repeatable": false,
+      "component": "metas.seo"
     }
   }
 }

@@ -1,58 +1,71 @@
 import React, { useState } from "react";
-import { Button } from "@strapi/design-system/Button";
-import { Alert } from "@strapi/design-system/Alert";
-import Editor from "../QuillEditor";
-// import MediaLib from "../MediaLib";
+// import { isEmpty } from "lodash";
+import Editor from "../TinyMCE";
 
-const Wysiwyg = ({ inputDescription, error, label, name, onChange, value }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Wysiwyg = ({
+  inputDescription,
+  errors,
+  label,
+  name,
+  noErrorsDescription,
+  onChange,
+  value,
+}) => {
+  // const [isOpen, setIsOpen] = useState(false);
+  // let spacer = !isEmpty(inputDescription) ? (
+  //   <div style={{ height: ".4rem" }} />
+  // ) : (
+  //   <div />
+  // );
 
-  const handleChange = (data) => {
-    if (data.mime.includes("image")) {
-      const imgTag = `<p><img src="${data.url}" caption="${data.caption}" alt="${data.alternativeText}"></img></p>`;
-      const newValue = value ? `${value}${imgTag}` : imgTag;
+  // if (!noErrorsDescription && !isEmpty(errors)) {
+  //   spacer = <div />;
+  // }
 
-      onChange({ target: { name, value: newValue } });
-    }
+  // const handleChange = (data) => {
+  // if (data.mime.includes("image")) {
+  //   const imgTag = `<p><img src="${data.url}" caption="${data.caption}" alt="${data.alternativeText}"></img></p>`;
+  //   const newValue = value ? `${value}${imgTag}` : imgTag;
+  //   onChange({ target: { name, value: newValue } });
+  // }
+  // Handle videos and other type of files by adding some code
+  // };
 
-    // Handle videos and other type of files by adding some code
-  };
+  // const handleToggle = () => setIsOpen((prev) => !prev);
 
-  const handleToggle = () => setIsOpen((prev) => !prev);
-
-  const hasError = Boolean(error);
-
-  return (
-    <div
-      style={{
-        marginBottom: "1.6rem",
-        fontSize: "1.3rem",
-        fontFamily: "Lato",
-      }}
-    >
-      {/* <div style={{ position: "absolute", right: "15px", top: "-10px" }}>
-        <Button variant="default" onClick={handleToggle}>
-          MediaLib
-        </Button>
-      </div> */}
-      {/* <Label htmlFor={name} style={{ marginBottom: 10 }}>
-        {label}{" "}
-      </Label> */}
-
-      <Editor name={name} onChange={onChange} value={value} />
-
-      {!hasError && inputDescription && (
-        <Alert variant="default">{inputDescription}</Alert>
-      )}
-      {hasError && <Alert variant="danger">{error}</Alert>}
-
-      {/* <MediaLib
-        onToggle={handleToggle}
-        isOpen={isOpen}
-        onChange={handleChange}
-      /> */}
-    </div>
-  );
+  return <Editor name={name} onChange={onChange} value={value} />;
 };
+
+// Wysiwyg.defaultProps = {
+//   errors: [],
+//   inputDescription: null,
+//   label: "",
+//   noErrorsDescription: false,
+//   value: "",
+// };
+
+// Wysiwyg.propTypes = {
+//   errors: PropTypes.array,
+//   inputDescription: PropTypes.oneOfType([
+//     PropTypes.string,
+//     PropTypes.func,
+//     PropTypes.shape({
+//       id: PropTypes.string,
+//       params: PropTypes.object,
+//     }),
+//   ]),
+//   label: PropTypes.oneOfType([
+//     PropTypes.string,
+//     PropTypes.func,
+//     PropTypes.shape({
+//       id: PropTypes.string,
+//       params: PropTypes.object,
+//     }),
+//   ]),
+//   name: PropTypes.string.isRequired,
+//   noErrorsDescription: PropTypes.bool,
+//   onChange: PropTypes.func.isRequired,
+//   value: PropTypes.string,
+// };
 
 export default Wysiwyg;

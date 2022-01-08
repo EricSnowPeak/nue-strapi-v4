@@ -1,13 +1,19 @@
 {
   "name": "wysiwyg",
   "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "description": "Converts default editor to Tiny MCE",
   "strapi": {
     "name": "wysiwyg",
-    "description": "Description of wysiwyg plugin",
+    "description": "Converts default editor to Tiny MCE",
     "kind": "plugin"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@buffetjs/core": "^3.3.8",
+    "@tinymce/tinymce-react": "^3.13.0",
+    "lodash": "^4.17.21",
+    "styled-components": "^5.3.3",
+    "tinymce": "^5.10.2"
+  },
   "author": {
     "name": "A Strapi developer"
   },

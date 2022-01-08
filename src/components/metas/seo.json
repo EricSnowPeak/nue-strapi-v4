@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_metas_seos",
+  "info": {
+    "displayName": "SEO",
+    "icon": "chart-line",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 160
+    },
+    "opengraph": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "robotsIndex": {
+      "type": "boolean",
+      "default": true
+    },
+    "robotsFollow": {
+      "type": "boolean",
+      "default": true
+    },
+    "canonical": {
+      "type": "string"
+    }
+  }
+}
